@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/nstore?useSSL=false&autoReconnect=true
+    username: root
+    password: 123456
+
+# The SQL dialect makes Hibernate generate SQL for the chosen database
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+  #JPA Settings
+  jpa.hibernate.ddl-auto: create

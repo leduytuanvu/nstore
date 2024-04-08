@@ -3,45 +3,38 @@ package com.leduytuanvu.nstore.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
+import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "category")
 public class Category {
     @Id
-    private String categoryId;
-    private String categoryName;
-    private Boolean categoryStatus;
+    private String id;
+    private String name;
 
     public Category() {
     }
 
-    public Category(String categoryID, String categoryName, Boolean categoryStatus) {
-        this.categoryId = categoryID;
-        this.categoryName = categoryName;
-        this.categoryStatus = categoryStatus;
+    public Category(String id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public String getCategoryID() {
-        return categoryId;
+    public String getId() {
+        return id;
     }
 
-    public void setCategoryID(String categoryID) {
-        this.categoryId = categoryID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getCategoryName() {
-        return categoryName;
+    public String getName() {
+        return name;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
-    public Boolean getCategoryStatus() {
-        return categoryStatus;
-    }
-
-    public void setCategoryStatus(Boolean categoryStatus) {
-        this.categoryStatus = categoryStatus;
+    public void setName(String name) {
+        this.name = name;
     }
 }

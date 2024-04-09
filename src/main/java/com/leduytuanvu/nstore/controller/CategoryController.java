@@ -1,6 +1,8 @@
 package com.leduytuanvu.nstore.controller;
 
+import com.leduytuanvu.nstore.exception.CategoryNotFoundException;
 import com.leduytuanvu.nstore.model.Category;
+import com.leduytuanvu.nstore.response.ResponseCustom;
 import com.leduytuanvu.nstore.response.ResponseHandler;
 import com.leduytuanvu.nstore.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,29 +24,34 @@ public class CategoryController {
 
     // Read specific category
     @GetMapping("{id}")
-    public ResponseEntity<Object> getCategory(@PathVariable("id") String id) {
-        return ResponseHandler.responseBuilder(HttpStatus.OK, "Request category details are given here", categoryService.getCategory(id));
+    public ResponseEntity<Object> getCategory(@PathVariable("id") Integer id) {
+        ResponseCustom responseCustom = categoryService.getCategory(id);
+        return ResponseHandler.responseBuilder(responseCustom);
     }
 
     // Read all categories
     @GetMapping()
-    public List<Category> getAllCategory() {
-        return categoryService.getAllCategory();
+    public ResponseEntity<Object> getAllCategory() {
+        ResponseCustom responseCustom = categoryService.getAllCategory();
+        return ResponseHandler.responseBuilder(responseCustom);
     }
 
     // Create new category
     @PostMapping()
-    public String createCategory(@RequestBody Category category) {
-        return categoryService.createCategory(category);
+    public ResponseEntity<Object> createCategory(@RequestBody Category category) {
+        ResponseCustom responseCustom = categoryService.createCategory(category);
+        return ResponseHandler.responseBuilder(responseCustom);
     }
 
-    @PutMapping()
-    public String updateCategory(@RequestBody Category category) {
-        return categoryService.updateCategory(category);
+    @PutMapping("{id}")
+    public ResponseEntity<Object> updateCategory(@PathVariable("id") Integer id, @RequestBody Category category) {
+        ResponseCustom responseCustom = categoryService.updateCategory(id, category);
+        return ResponseHandler.responseBuilder(responseCustom);
     }
 
     @DeleteMapping("{id}")
-    public String deleteCategory(@PathVariable("id") String id) {
-        return categoryService.deleteCategory(id);
+    public ResponseEntity<Object> deleteCategory(@PathVariable("id") Integer id) {
+        ResponseCustom responseCustom = categoryService.deleteCategory(id);
+        return ResponseHandler.responseBuilder(responseCustom);
     }
 }

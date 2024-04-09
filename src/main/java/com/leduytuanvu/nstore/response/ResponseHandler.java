@@ -3,20 +3,18 @@ package com.leduytuanvu.nstore.response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ResponseHandler {
     public static ResponseEntity<Object> responseBuilder(
-            HttpStatus httpStatus,
-            String message,
-            Object responseObject
+            ResponseCustom responseCustom
     ) {
-        Map<String, Object> response = new HashMap<>();
-        response.put("httpStatus", httpStatus);
-        response.put("message", message);
-        response.put("data", responseObject);
+        Map<String, Object> response = new LinkedHashMap<>();
+        response.put("statusCode", responseCustom.getStatusCode());
+        response.put("message", responseCustom.getMessage());
+        response.put("data", responseCustom.getData());
 
-        return new ResponseEntity<>(response, httpStatus);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

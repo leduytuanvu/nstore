@@ -1,13 +1,12 @@
 package com.leduytuanvu.nstore.service;
 
 import com.leduytuanvu.nstore.model.Category;
-import java.util.List;
-import java.util.UUID;
+import com.leduytuanvu.nstore.response.ResponseCustom;
 
 public interface CategoryService {
-    public String createCategory(Category category);
-    public String updateCategory(Category category);
-    public String deleteCategory(String id);
-    public Category getCategory(String id);
-    public List<Category> getAllCategory();
+    public ResponseCustom createCategory(Category category);
+    public ResponseCustom updateCategory(Integer id, Category category);
+    public ResponseCustom deleteCategory(Integer id);
+    public ResponseCustom getCategory(Integer id);
+    public ResponseCustom getAllCategory();
 }
